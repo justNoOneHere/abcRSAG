@@ -30,7 +30,7 @@ def main():
     num_files = int(input("Enter the number of audio files to generate: "))
 
     for i in range(num_files):
-        output_file = f"a/{str(uuid.uuid4())}.mp3"
+        output_file = f"abcRSAG/a/{str(uuid.uuid4())}.mp3"
         random_audio = generate_random_audio()
         random_audio.export(output_file, format="mp3")
         print(f"Random audio with beeps generated and saved to {output_file}")
