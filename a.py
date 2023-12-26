@@ -18,7 +18,7 @@ def create_video(num_videos=1, duration=10, frame_rate=30, resolution=(640, 640)
 
         # Video properties
         fourcc = cv2.VideoWriter_fourcc(*'mp4v')
-        output_path = f"/content/abcRSAG/v/{str(uuid.uuid4())}.mp4"
+        output_path = f"abcRSAG/v/{str(uuid.uuid4())}.mp4"
         video_writer = cv2.VideoWriter(output_path, fourcc, frame_rate, resolution)
 
         # Generate a random number of objects
