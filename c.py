@@ -7,10 +7,10 @@ def combine_video_audio(video_path, audio_path, output_path):
     video_clip = VideoFileClip(video_path)
 
     # Load a random audio clip from the 'a' directory
-    audio_files = [f for f in os.listdir(audio_directory) if f.endswith(".mp3")]
+    audio_files = [f for f in os.listdir(audio_path) if f.endswith(".mp3")]
     if audio_files:
         random_audio_filename = random.choice(audio_files)
-        random_audio_path = os.path.join(audio_directory, random_audio_filename)
+        random_audio_path = os.path.join(audio_path, random_audio_filename)
         audio_clip = AudioFileClip(random_audio_path)
     else:
         print("No audio files found in the 'a' directory.")
@@ -21,6 +21,10 @@ def combine_video_audio(video_path, audio_path, output_path):
 
     # Write the result to a new file
     video_clip.write_videofile(output_path, codec="libx264", audio_codec="aac")
+
+    # Remove input video and audio files
+    os.remove(video_path)
+    os.remove(random_audio_path)
 
 if __name__ == "__main__":
     # Input directories
@@ -42,7 +46,7 @@ if __name__ == "__main__":
             output_filename = os.path.splitext(video_filename)[0] + ".mp4"
             output_path = os.path.join(output_directory, output_filename)
 
-            # Combine video with a random audio file
+            # Combine video with a random audio file and delete input files
             combine_video_audio(video_path, audio_directory, output_path)
 
     print("Process completed.")
