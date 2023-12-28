@@ -3,6 +3,7 @@ import random
 from pydub import AudioSegment
 from pydub.generators import Sine
 import uuid
+import sys
 
 def generate_random_beep():
     # Random frequency for the beep (you can adjust the range as needed)
@@ -27,7 +28,11 @@ def generate_random_audio(duration=10, num_beeps=20):
     return audio
 
 def main():
-    num_files = int(input("Enter the number of audio files to generate: "))
+    if len(sys.argv) != 2:
+        print("Usage: python b.py <num_files>")
+        sys.exit(1)
+
+    num_files = int(sys.argv[1])
 
     for i in range(num_files):
         output_file = f"abcRSAG/a/{str(uuid.uuid4())}.mp3"
