@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 import random
 import uuid
+import sys
 import matplotlib.pyplot as plt
 
 def random_color():
@@ -1171,5 +1172,8 @@ def create_video(num_videos=1, duration=10, frame_rate=30, resolution=(640, 640)
         print(f"Video {output_path} generated and saved.")
 
 if __name__ == "__main__":
-    num_videos_to_generate = int(input("Enter the number of videos to generate: "))
+    if len(sys.argv) != 2:
+        print("Usage: python a.py <num_videos>")
+        sys.exit(1)
+    num_videos_to_generate = int(sys.argv[1])
     create_video(num_videos=num_videos_to_generate, aspect_ratio=(9, 16))
