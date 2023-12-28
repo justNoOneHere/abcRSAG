@@ -28,11 +28,11 @@ def combine_video_audio(video_path, audio_path, output_path):
 
 if __name__ == "__main__":
     # Input directories
-    video_directory = "abcRSAG/v"
-    audio_directory = "abcRSAG/a"
+    video_directory = "abcRSAG/rvideo"
+    audio_directory = "abcRSAG/raudio"
 
     # Output directory
-    output_directory = "abcRSAG/vc"
+    output_directory = "abcRSAG/rva-combine"
 
     # Ensure output directory exists
     os.makedirs(output_directory, exist_ok=True)
